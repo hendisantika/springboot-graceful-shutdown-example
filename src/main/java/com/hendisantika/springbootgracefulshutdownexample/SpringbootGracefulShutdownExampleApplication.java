@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -26,7 +27,7 @@ public class SpringbootGracefulShutdownExampleApplication {
         public String hello() throws InterruptedException {
             System.out.println("Waiting for 5 seconds...");
             executor.execute(this::task);
-            return "Hello World";
+            return "Hello World! " + LocalDateTime.now();
         }
 
         private void task() {
